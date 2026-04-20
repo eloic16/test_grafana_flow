@@ -1,39 +1,39 @@
-# Configuration pour le plugin Flow
-{
-  "nodes": [
-    {
-      "id": "node-1",
-      "data": {
-        "label": "Test-A"  # Changement de label
-      },
-      "style": {
-        "fill": "#FF0000",  # Couleur rouge
-        "stroke": "#000000"
-      }
-    },
-    {
-      "id": "node-2",
-      "data": {
-        "label": "Test-B"
-      },
-      "style": {
-        "fill": "#00FF00",  # Couleur verte
-        "stroke": "#000000"
-      }
-    }
-  ],
-  "edges": [
-    {
-      "id": "edge-1",
-      "source": "node-1",
-      "target": "node-2",
-      "data": {
-        "label": "Lien Test"
-      },
-      "style": {
-        "stroke": "#0000FF",  # Couleur bleue
-        "strokeWidth": 2
-      }
-    }
-  ]
-}
+cellIdPreamble: "cell-"
+
+cells:
+
+  paris:
+    dataRef: "weather-paris-temp"
+    label:
+      units: "°C"
+      decimalPoints: 0
+    fillColor:
+      gradientMode: "hue"
+      thresholds:
+        - { color: "#2c7bb6", level: -5 }   # froid
+        - { color: "#ffffbf", level: 15 }   # tempéré
+        - { color: "#d7191c", level: 30 }   # chaud
+
+  lyon:
+    dataRef: "weather-lyon-temp"
+    label:
+      units: "°C"
+      decimalPoints: 0
+    fillColor:
+      gradientMode: "hue"
+      thresholds:
+        - { color: "#2c7bb6", level: -5 }
+        - { color: "#ffffbf", level: 15 }
+        - { color: "#d7191c", level: 30 }
+
+  marseille:
+    dataRef: "weather-marseille-temp"
+    label:
+      units: "°C"
+      decimalPoints: 0
+    fillColor:
+      gradientMode: "hue"
+      thresholds:
+        - { color: "#2c7bb6", level: -5 }
+        - { color: "#ffffbf", level: 15 }
+        - { color: "#d7191c", level: 30 }
