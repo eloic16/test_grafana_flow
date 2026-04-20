@@ -1,5 +1,39 @@
-elements:
-  - id: "node-1"  # Doit correspondre au data-cell-id dans le SVG
-    style:
-      fill: "red"  # Change la couleur de remplissage
-      stroke: "blue"  # Change la couleur de la bordure
+# Configuration pour le plugin Flow
+{
+  "nodes": [
+    {
+      "id": "node-1",
+      "data": {
+        "label": "Test-A"  # Changement de label
+      },
+      "style": {
+        "fill": "#FF0000",  # Couleur rouge
+        "stroke": "#000000"
+      }
+    },
+    {
+      "id": "node-2",
+      "data": {
+        "label": "Test-B"
+      },
+      "style": {
+        "fill": "#00FF00",  # Couleur verte
+        "stroke": "#000000"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-1",
+      "source": "node-1",
+      "target": "node-2",
+      "data": {
+        "label": "Lien Test"
+      },
+      "style": {
+        "stroke": "#0000FF",  # Couleur bleue
+        "strokeWidth": 2
+      }
+    }
+  ]
+}
