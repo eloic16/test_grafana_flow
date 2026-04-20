@@ -1,4 +1,5 @@
 elements:
-  - id: RiAviDcgGVyT72foxY9w-10
+  - id: "node-1"  # Doit correspondre au data-cell-id dans le SVG
     style:
-      color: red
+      fill: "red"  # Change la couleur de remplissage
+      stroke: "blue"  # Change la couleur de la bordure
