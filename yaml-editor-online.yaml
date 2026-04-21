@@ -1,38 +1,7 @@
-cellIdPreamble: "cell-"
-
 cells:
-
-  paris:
+  - id: "paris"
     dataRef: "weather-paris-temp"
-    label:
-      units: "°C"
-      decimalPoints: 0
     fillColor:
-      gradientMode: "hue"
-      thresholds:
-        - { color: "#2c7bb6", level: -5 }   # froid
-        - { color: "#ffffbf", level: 15 }   # tempéré
-        - { color: "#d7191c", level: 30 }   # chaud
-
-  lyon:
-    dataRef: "weather-lyon-temp"
-    label:
-      units: "°C"
-      decimalPoints: 0
-    fillColor:
-      gradientMode: "hue"
-      thresholds:
-        - { color: "#2c7bb6", level: -5 }
-        - { color: "#ffffbf", level: 15 }
-        - { color: "#d7191c", level: 30 }
-
-  marseille:
-    dataRef: "weather-marseille-temp"
-    label:
-      units: "°C"
-      decimalPoints: 0
-    fillColor:
-      gradientMode: "hue"
       thresholds:
         - { color: "#2c7bb6", level: -5 }
         - { color: "#ffffbf", level: 15 }
