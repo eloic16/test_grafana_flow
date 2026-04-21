@@ -1,41 +1,46 @@
-# Configuration globale
-cellIdPreamble: "cell-"
-gradientMode: "hue"
+elements:
+  queue:
+    value: ${queue_depth}
+    text: "Queue: ${__value.raw}"
+    thresholds:
+      - color: green
+        value: 0
+      - color: orange
+        value: 50
+      - color: red
+        value: 100
 
-# Définition des seuils réutilisables (Anchor)
-thresholds:
-  temp_colors: &temp_thresholds
-    - { color: "#2c7bb6", level: -5 }   # Froid (Bleu)
-    - { color: "#ffffbf", level: 15 }   # Tempéré (Jaune/Blanc)
-    - { color: "#d7191c", level: 30 }   # Chaud (Rouge)
+  workers:
+    value: ${active_workers}
+    text: "Workers: ${__value.raw}"
 
-cells:
-  # --- PARIS ---
-  paris:
-    dataRef: "weather-paris-temp"
-    label:
-      units: "celcius"
-      decimalPoints: 0
-      separator: "space"
-    fillColor:
-      thresholds: *temp_thresholds
+  success:
+    value: ${success_rate}
+    text: "OK: ${__value.raw}/s"
 
-  # --- LYON ---
-  lyon:
-    dataRef: "weather-lyon-temp"
-    label:
-      units: "celcius"
-      decimalPoints: 0
-      separator: "space"
-    fillColor:
-      thresholds: *temp_thresholds
+  errors:
+    value: ${error_rate}
+    text: "Errors: ${__value.raw}/s"
+    thresholds:
+      - color: green
+        value: 0
+      - color: red
+        value: 10
 
-  # --- MARSEILLE ---
-  marseille:
-    dataRef: "weather-marseille-temp"
-    label:
-      units: "celcius"
-      decimalPoints: 0
-      separator: "space"
-    fillColor:
-      thresholds: *temp_thresholds
+  queue_to_workers:
+    value: ${processing_rate}
+    color:
+      mode: threshold
+    thresholds:
+      - color: green
+        value: 0
+      - color: red
+        value: 100
+
+  workers_to_success:
+    value: ${success_rate}
+
+  workers_to_errors:
+    value: ${error_rate}
+    color:
+      fixed: red
