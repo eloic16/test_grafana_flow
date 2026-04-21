@@ -1,28 +1,41 @@
-config:
-  # On définit le préfixe ici si on veut l'utiliser globalement
-  cellIdPreamble: "cell-"
+# Configuration globale
+cellIdPreamble: "cell-"
+gradientMode: "hue"
 
-rules:
-  - id: "rule-weather"
-    # Expression régulière pour matcher cell-paris, cell-lyon, cell-marseille
-    pattern: "cell-(paris|lyon|marseille)"
-    # On lie la donnée dynamiquement : ${__object_id} reprend la fin de l'ID après le préfixe
-    dataRef: "weather-${__object_id_without_preamble}-temp"
-    
+# Définition des seuils réutilisables (Anchor)
+thresholds:
+  temp_colors: &temp_thresholds
+    - { color: "#2c7bb6", level: -5 }   # Froid (Bleu)
+    - { color: "#ffffbf", level: 15 }   # Tempéré (Jaune/Blanc)
+    - { color: "#d7191c", level: 30 }   # Chaud (Rouge)
+
+cells:
+  # --- PARIS ---
+  paris:
+    dataRef: "weather-paris-temp"
     label:
-      enabled: true
-      units: "°C"
+      units: "celcius"
       decimalPoints: 0
-      # Remplace le texte à l'intérieur du rectangle par la valeur
-      replaceText: true 
-
+      separator: "space"
     fillColor:
-      enabled: true
-      gradientMode: "hue"
-      thresholds:
-        - level: -5
-          color: "#2c7bb6"
-        - level: 15
-          color: "#ffffbf"
-        - level: 30
-          color: "#d7191c"
+      thresholds: *temp_thresholds
+
+  # --- LYON ---
+  lyon:
+    dataRef: "weather-lyon-temp"
+    label:
+      units: "celcius"
+      decimalPoints: 0
+      separator: "space"
+    fillColor:
+      thresholds: *temp_thresholds
+
+  # --- MARSEILLE ---
+  marseille:
+    dataRef: "weather-marseille-temp"
+    label:
+      units: "celcius"
+      decimalPoints: 0
+      separator: "space"
+    fillColor:
+      thresholds: *temp_thresholds
