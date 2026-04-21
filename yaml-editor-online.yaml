@@ -16,6 +16,8 @@ elements:
 
   success:
     value: ${success_rate}
+
+  success_label:
     text: "OK: ${__value.raw}/s"
 
   errors:
