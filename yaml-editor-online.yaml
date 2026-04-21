@@ -3,4 +3,4 @@ elements:
     value: ${value}
 
   label:
-    text: "${value}"
+    text: "SALUT"
