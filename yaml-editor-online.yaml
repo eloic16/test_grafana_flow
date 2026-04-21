@@ -1,7 +1,28 @@
 config:
+  # On définit le préfixe ici si on veut l'utiliser globalement
   cellIdPreamble: "cell-"
 
-# Dans beaucoup de versions, on définit des 'rules'
 rules:
-  - id: "paris"
-    dataRef: "weather-paris-temp"
+  - id: "rule-weather"
+    # Expression régulière pour matcher cell-paris, cell-lyon, cell-marseille
+    pattern: "cell-(paris|lyon|marseille)"
+    # On lie la donnée dynamiquement : ${__object_id} reprend la fin de l'ID après le préfixe
+    dataRef: "weather-${__object_id_without_preamble}-temp"
+    
+    label:
+      enabled: true
+      units: "°C"
+      decimalPoints: 0
+      # Remplace le texte à l'intérieur du rectangle par la valeur
+      replaceText: true 
+
+    fillColor:
+      enabled: true
+      gradientMode: "hue"
+      thresholds:
+        - level: -5
+          color: "#2c7bb6"
+        - level: 15
+          color: "#ffffbf"
+        - level: 30
+          color: "#d7191c"
