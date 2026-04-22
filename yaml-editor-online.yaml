@@ -6,7 +6,7 @@ cellIdPreamble: "cell-"
 cells:
   # Correspond à <g id="cell-load_balancer">
   load_balancer:
-    dataRef: "trafic_entrant"  # Le nom de ta requête Grafana
+    dataRef: "trafic_entrant-series"  # Le nom de ta requête Grafana
     label:
       separator: "cr"          # "cr" = carriage return (retour à la ligne). Le texte Grafana s'affichera sous le texte SVG.
       units: " req/s"          # Unité ajoutée à la fin de la valeur
