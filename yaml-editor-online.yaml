@@ -1,3 +1,45 @@
-elements:
-  label:
-    value: "SALUT"
+---
+# Le préfixe "cell-" dit au plugin : 
+# "Cherche dans le SVG un ID qui commence par cell- suivi de ma clé"
+cellIdPreamble: "cell-"
+
+cells:
+  # Correspond à <g id="cell-load_balancer">
+  load_balancer:
+    dataRef: "trafic_entrant"  # Le nom de ta requête Grafana
+    label:
+      separator: "cr"          # "cr" = carriage return (retour à la ligne). Le texte Grafana s'affichera sous le texte SVG.
+      units: " req/s"          # Unité ajoutée à la fin de la valeur
+      decimalPoints: 0
+    fillColor:                 # Change la couleur de fond (<rect>) selon la valeur
+      gradientMode: "hue"
+      thresholds:
+        - {color: "green", level: 0}
+        - {color: "orange", level: 1000}
+        - {color: "red", level: 5000}
+
+  # Correspond à <g id="cell-serveur_1">
+  serveur_1:
+    dataRef: "cpu_srv1"
+    label:
+      separator: "colon"       # "colon" = affichera "Serveur 1 : [Valeur]"
+      units: "% CPU"
+      decimalPoints: 1
+    fillColor:
+      gradientMode: "hue"
+      thresholds:
+        - {color: "green", level: 0}
+        - {color: "red", level: 85}
+
+  # Correspond à <g id="cell-serveur_2">
+  serveur_2:
+    dataRef: "cpu_srv2"
+    label:
+      separator: "colon"
+      units: "% CPU"
+      decimalPoints: 1
+    fillColor:
+      gradientMode: "hue"
+      thresholds:
+        - {color: "green", level: 0}
+        - {color: "red", level: 85}
